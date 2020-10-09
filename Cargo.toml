@@ -1,0 +1,9 @@
+[package]
+name = "dark-sky-weather"
+version = "0.1.0"
+authors = ["Nick MBP <nikinweb@gmail.com>"]
+
+[dependencies]
+reqwest = { version = "~0.10.8", features = ["blocking", "json"] }
+json = "~0.12.4"
+clap = { version = "~2.27.0", features = ["yaml"] }

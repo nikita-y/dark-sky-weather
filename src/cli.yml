@@ -1,0 +1,24 @@
+name: dark-sky-weather
+version: "1.0"
+author: Nikita Y. <nikinweb@gmail.com>
+about: Shows short weather forecast for given location
+args:
+    - key:
+          short: k
+          long: key
+          value_name: KEY
+          help: API key for forecast.io
+          takes_value: true
+          required: true
+    - latitude:
+          short: n
+          long: lat
+          value_name: LATITUDE
+          takes_value: true
+          required: true
+    - longitude:
+          short: e
+          long: lng
+          value_name: LONGITUDE
+          takes_value: true
+          required: true

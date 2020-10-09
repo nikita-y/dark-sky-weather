@@ -1,0 +1,27 @@
+name: Docker
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DH_LOGIN: ${{ secrets.DH_LOGIN }}
+      DH_PASS: ${{ secrets.DH_PASS }}
+      DH_REPO: ${{ secrets.DH_REPO }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker login
+        run: docker login -u ${DH_LOGIN} -p ${DH_PASS}
+
+      - name: Build the Docker image
+        run: |
+          docker build . -t ${DH_REPO}:${GITHUB_REF#refs/heads/}-${GITHUB_SHA::8} -t ${DH_REPO}:latest
+
+      - name: Push the docker image
+        run: docker push ${DH_REPO}
